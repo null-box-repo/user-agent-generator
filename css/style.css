@@ -1,0 +1,8 @@
+/* Imports all CSS modules for the UA Tool website. */
+@import url("base.css");
+@import url("toolbar.css");
+@import url("tabs.css");
+@import url("cards.css");
+@import url("form.css");
+@import url("animations.css");
+@import url("responsive.css");

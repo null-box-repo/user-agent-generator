@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Agent Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <h1 class="title">User Agent Generator</h1>
+    </div>
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="container">
+    <nav class="tabs">
+      <button class="tab active" data-tab="detect">Detect</button>
+      <button class="tab" data-tab="generate">Generate</button>
+    </nav>
+
+    <section id="detect" class="page active">
+      <div class="card fade-in">
+        <div class="card-header">
+          <h2>Your User Agent</h2>
+          <button id="copyCurrent" class="copy-btn">Copy</button>
+        </div>
+        <div class="ua-display" id="currentUA"></div>
+      </div>
+
+      <div class="card fade-in delay-1">
+        <div class="card-header">
+          <h2>Browser Details</h2>
+        </div>
+        <div class="details-grid" id="browserDetails"></div>
+      </div>
+
+      <div class="card fade-in delay-2">
+        <div class="card-header">
+          <h2>System Info</h2>
+        </div>
+        <div class="details-grid" id="systemDetails"></div>
+      </div>
+    </section>
+
+    <section id="generate" class="page">
+      <div class="card fade-in">
+        <div class="card-header">
+          <h2>Generate User Agent</h2>
+        </div>
+
+        <div class="form-section">
+          <h3 class="section-label">Browser</h3>
+          <div class="options-row">
+            <select id="browser" class="select-input">
+              <optgroup label="Chromium">
+                <option value="chrome">Chrome</option>
+                <option value="chrome-mobile">Chrome Mobile</option>
+                <option value="brave">Brave</option>
+                <option value="vivaldi">Vivaldi</option>
+                <option value="edge">Microsoft Edge</option>
+                <option value="opera">Opera</option>
+                <option value="opera-mini">Opera Mini</option>
+              </optgroup>
+              <optgroup label="Gecko">
+                <option value="firefox">Firefox</option>
+                <option value="firefox-mobile">Firefox Mobile</option>
+                <option value="librewolf">LibreWolf</option>
+                <option value="waterfox">Waterfox</option>
+              </optgroup>
+              <optgroup label="WebKit">
+                <option value="safari">Safari</option>
+                <option value="safari-mobile">Safari Mobile</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="uc">UC Browser</option>
+                <option value="samsung">Samsung Internet</option>
+                <option value="yandex">Yandex Browser</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <h3 class="section-label">Operating System</h3>
+          <div class="options-row">
+            <select id="os" class="select-input">
+              <optgroup label="Desktop">
+                <option value="windows-11">Windows 11</option>
+                <option value="windows-10">Windows 10</option>
+                <option value="macos-sonoma">macOS Sonoma</option>
+                <option value="macos-ventura">macOS Ventura</option>
+                <option value="linux-ubuntu">Ubuntu Linux</option>
+                <option value="linux-fedora">Fedora Linux</option>
+                <option value="linux-arch">Arch Linux</option>
+                <option value="chromeos">ChromeOS</option>
+              </optgroup>
+              <optgroup label="Mobile">
+                <option value="android-14">Android 14</option>
+                <option value="android-13">Android 13</option>
+                <option value="android-12">Android 12</option>
+                <option value="android-11">Android 11</option>
+                <option value="android-10">Android 10</option>
+                <option value="ios-17">iOS 17</option>
+                <option value="ios-16">iOS 16</option>
+                <option value="ios-15">iOS 15</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div id="extrasSection">
+            <h3 class="section-label">Extras</h3>
+            <div class="checkbox-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="mobileOptimized" checked>
+                <span class="checkmark"></span>
+                Mobile
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <button id="generateBtn" class="generate-btn">Generate User Agent</button>
+
+        <div class="result-box" id="generatedResult" hidden>
+          <div class="card-header">
+            <h3>Generated User Agent</h3>
+            <button id="copyGenerated" class="copy-btn">Copy</button>
+          </div>
+          <div class="ua-display" id="generatedUA"></div>
+          <div class="details-grid" id="generatedDetails"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/parse.js"></script>
+  <script src="js/generate.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

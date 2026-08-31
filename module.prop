@@ -1,0 +1,11 @@
+id=user-agent-generator
+name=User Agent Generator
+icon=icon.jpg
+description=Easily generate random user agents.
+author=YasserNull
+version=v1.0.0
+versionCode=1
+repository=https://github.com/null-box-repo/user-agent-generator
+html=index.html
+install=setup.sh
+permission=default
